@@ -1,7 +1,6 @@
 'use strict';
 
-let num1 = 0,
-    num2 = 0;
+let resultArr = [];
    
 
 // const operators = {
@@ -28,6 +27,7 @@ let oneButton = document.getElementById("one"),
     equalsButton = document.getElementById("equals"),
 
     displayNum = document.getElementById("displayNum");
+    
 // Set number buttons to display and retain all digits up to max allowed. 
 oneButton.addEventListener('click', function () {
     displayNum.innerText += oneButton.innerText;
@@ -70,11 +70,10 @@ zeroButton.addEventListener('click', function () {
 });
 
 addButton.addEventListener('click', function () {
-   num1 = displayNum.innerText; 
+   resultArr.push(displayNum.innerText, '+'); 
+   resultArr.join("");
    displayNum.innerText = '';
-   return op;
-
-});
+   });
 
 subButton.addEventListener('click', function () {
     num1 = displayNum.innerText; 
@@ -98,10 +97,19 @@ subButton.addEventListener('click', function () {
  });
 
  equalsButton.addEventListener('click', function () {
-     num2 = displayNum.innerText;
-     let opAdd = parseFloat(num1) + parseFloat(num2);
-     displayNum.innerText = opAdd;
+     resultArr.push(displayNum.innerText);
+     let total = resultArr.join(",");
+     displayNum.innerText = total;
  });
  
+
+
+
+ // add only numbers and binary operators to array.
+ // when =, clear screen and display results of array.
+
+
+ //  let test = [100+2*3-1/100];
+//  console.log(test);
 
 
