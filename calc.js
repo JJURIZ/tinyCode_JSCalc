@@ -11,6 +11,14 @@ const operators = {
     '/': function(a, b) { return num1 / num2 },
 };
 
+let oneButton = document.getElementById("one");
+let displayNum = document.getElementById("displayNum");
 
-op = '-';
-console.log((operators[op](10, 20)));
+oneButton.addEventListener('click', function(){
+    num1 = 1;
+    displayNum.innerText = num1;
+    console.log("hell, is this thing even on?")
+    });
+
+// op = '-';
+// console.log((operators[op](10, 20)))
