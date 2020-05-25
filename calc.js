@@ -1,7 +1,8 @@
 'use strict';
 
 let num1 = null, 
-    num2 = null;
+    num2 = null,
+    state = 0;
    
 
 // const operators = {
@@ -34,6 +35,10 @@ let oneButton = document.getElementById("one"),
 
 // Set number buttons to display and retain all digits up to max allowed. 
 oneButton.addEventListener('click', function () {
+    if (state ==  1) {
+        displayNum.innerText = ' ';
+        state = 0;
+      } else (state == 0)
     displayNum.innerText += oneButton.innerText;
 });
 
@@ -78,12 +83,6 @@ dotButton.addEventListener('click', function () {
 });
 
 
-// let addFun = () => {
-//     if (num2 != null) {
-
-//     } else
-//         return console.log("You haven't got two numbers dude!");
-// };
 
 addButton.addEventListener('click', function () {
     if (num1 == null) {
@@ -93,23 +92,30 @@ addButton.addEventListener('click', function () {
         num2 = displayNum.innerText;
         let result = (parseFloat(num1) + parseFloat(num2));
         displayNum.innerText = result;
-        console.log(num1);
+        num1 = result;
+        num2 = 0;
+        state = 1;
     }
 });
 
+// subButton.addEventListener('click', function () {
+//     if (num1 == null) {
+//         num1 = displayNum.innerText;
+//         displayNum.innerText = ' ';
+//     } else if (num1 != null) {
+//         num2 = displayNum.innerText;
+//         let result = (parseFloat(num1) - parseFloat(num2));
+//         displayNum.innerText = result;
+//         num1 = result;
+//         num2 = 0;
+//         state = 1;
+//     }
+// });
 
-// addButton.addEventListener('click', function () {
-//    resultArr.push(displayNum.innerText, '+'); 
-//    resultArr.join("");
-//    displayNum.innerText = '';
-//    });
-
-subButton.addEventListener('click', function () {
-    num1 = displayNum.innerText; 
-    op = '-';
-    displayNum.innerText = '';
-    return op;
-     });
+    subButton.addEventListener('click', function() {
+        num1 = displayNum.innerText;
+        displayNum.innerText = ' ';
+    })
 
  multiButton.addEventListener('click', function () {
     num1 = displayNum.innerText; 
@@ -126,11 +132,19 @@ subButton.addEventListener('click', function () {
  });
 
  equalsButton.addEventListener('click', function () {
-     resultArr.push(displayNum.innerText);
-     let singleArr = resultArr.join('');
-     displayNum.innerText = singleArr;
-     console.log(singleArr);
+    num2 = displayNum.innerText;
+    let result = (parseFloat(num1) - parseFloat(num2));
+    displayNum.innerText = result;
       });
+
+      // addButton now correctly adds num1 and num2 instead of concatanating the values. 
+      // Added parantheses around this - parseFloat(num1) + parseFloat(num2) -.
+
+      // New problem - When I click a number button it concatanates the new number to the sum currently in the div. 
+      // I need the value to display until the next button click. However, the second button click cannot clear the new entry. 
+
+      // 5/25/2020 6:05 - Comments above did not work as expected. Scaled back and just getting num1 - num2 = result. 
+      // Got that to work at least.
  
 
 

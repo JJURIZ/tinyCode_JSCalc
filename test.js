@@ -48,6 +48,7 @@ let oneButton = document.getElementById("one"),
     
 // Set number buttons to display and retain all digits up to max allowed. 
 oneButton.addEventListener('click', function () {
+    
     displayNum.innerText += oneButton.innerText;
 });
 
