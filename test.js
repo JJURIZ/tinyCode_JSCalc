@@ -1,7 +1,24 @@
+let num1 = 0;
+let num2 = null;
+let add = 'addNums';
+
+num1 = 5;
+num2 = 10;
+
+
+let addFun = () => {
+    if (num2 != null) {
+        let sum = num1 += num2;
+        return sum;
+    } else
+        return console.log("You haven't got two numbers dude!");
+};
+
+console.log(addFun());
+
 'use strict';
 
-let num1 = null, 
-    num2 = null;
+let resultArr = [];
    
 
 // const operators = {
@@ -21,7 +38,6 @@ let oneButton = document.getElementById("one"),
     eightButton = document.getElementById("eight"),
     nineButton = document.getElementById("nine"),
     zeroButton = document.getElementById("zero"),
-    dotButton = document.getElementById("dot"),
     addButton = document.getElementById("add"),
     subButton = document.getElementById("sub"),
     multiButton = document.getElementById("multi"),
@@ -29,9 +45,7 @@ let oneButton = document.getElementById("one"),
     equalsButton = document.getElementById("equals"),
 
     displayNum = document.getElementById("displayNum");
-
-
-
+    
 // Set number buttons to display and retain all digits up to max allowed. 
 oneButton.addEventListener('click', function () {
     displayNum.innerText += oneButton.innerText;
@@ -62,7 +76,7 @@ sevenButton.addEventListener('click', function () {
 });
 
 eightButton.addEventListener('click', function () {
-    displayNum.innerText += parseFloat(eightButton.innerText);
+    displayNum.innerText += eightButton.innerText;
 });
 
 nineButton.addEventListener('click', function () {
@@ -73,36 +87,11 @@ zeroButton.addEventListener('click', function () {
     displayNum.innerText += zeroButton.innerText;
 });
 
-dotButton.addEventListener('click', function () {
-    displayNum.innerText += dotButton.innerText;
-});
-
-
-// let addFun = () => {
-//     if (num2 != null) {
-
-//     } else
-//         return console.log("You haven't got two numbers dude!");
-// };
-
 addButton.addEventListener('click', function () {
-    if (num1 == null) {
-        num1 = displayNum.innerText;
-        displayNum.innerText = ' ';
-    } else if (num1 != null) {
-        num2 = displayNum.innerText;
-        let result = (parseFloat(num1) + parseFloat(num2));
-        displayNum.innerText = result;
-        console.log(num1);
-    }
-});
-
-
-// addButton.addEventListener('click', function () {
-//    resultArr.push(displayNum.innerText, '+'); 
-//    resultArr.join("");
-//    displayNum.innerText = '';
-//    });
+   resultArr.push(displayNum.innerText, '+'); 
+   resultArr.join("");
+   displayNum.innerText = '';
+   });
 
 subButton.addEventListener('click', function () {
     num1 = displayNum.innerText; 
@@ -135,5 +124,11 @@ subButton.addEventListener('click', function () {
 
 
 
+ // add only numbers and binary operators to array.
+ // when =, clear screen and display results of array.
+// Learned the difference between a standard calc and scientific today!
+
+ //  let test = [100+2*3-1/100];
+//  console.log(test);
 
 
