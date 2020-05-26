@@ -58,13 +58,13 @@ let oneButton = document.getElementById("one"),
             result = displayNum.innerText;
         // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
         } else if (state == 2) {
-            alert("you need to pick a number!")
+            return;
         };
         });
 
    
     oneButton.addEventListener('click', function () {
-        if (state ==  1) {
+        if (state ==  1 || state == 2) {
             displayNum.innerText = ' ';
             state = 0;
         } else (state == 0) 
