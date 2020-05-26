@@ -2,15 +2,21 @@
 
 let num1 = null, 
     num2 = null,
+    result = null,
     state = 0;
    
 
-// const operators = {
-//     '+': function (a, b) { return num1 + num2 },
-//     '-': function (a, b) { return num1 - num2 },
-//     '*': function (a, b) { return num1 * num2 },
-//     '/': function (a, b) { return num1 / num2 },
-// };
+const operators = {
+    'plus': function (a, b) { return parseFloat(num1) + parseFloat(num2) },
+    'minus': function (a, b) { return parseFloat(num1) - parseFloat(num2)  },
+    'multiply': function (a, b) { return parseFloat(num1) * parseFloat(num2)  },
+    'divide': function (a, b) { return parseFloat(num1) / parseFloat(num2) },
+};
+
+let myStatus;
+
+console.log(myStatus);
+
 
 let oneButton = document.getElementById("one"),
     twoButton = document.getElementById("two"),
@@ -31,123 +37,77 @@ let oneButton = document.getElementById("one"),
 
     displayNum = document.getElementById("displayNum");
 
+    addButton.addEventListener('click', function(){
+        // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
+        if (num1 == null) {
+            num1 = displayNum.innerText;
+            myStatus = operators.plus;
+            state = 1;
+        // Condition 2 - Second number selected and previous operation to be executed. 
+        } else if (num1 != null && result == null) {
+            num2 = displayNum.innerText;
+            displayNum.innerText = myStatus();
+            state = 1;
+            result = displayNum.innerText;
+        // Condition 3 - Result from previous operation stored and new number entered by user. 
+        } else if (num1 != null && result != null && state != 2) {
+            num1 = result;
+            num2 = displayNum.innerText;
+            displayNum.innerText = myStatus();
+            state = 2;
+            result = displayNum.innerText;
+        // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
+        } else if (state == 2) {
+            alert("you need to pick a number!")
+        };
+        });
 
-
-// Set number buttons to display and retain all digits up to max allowed. 
-oneButton.addEventListener('click', function () {
-    if (state ==  1) {
-        displayNum.innerText = ' ';
-        state = 0;
-      } else (state == 0)
-    displayNum.innerText += oneButton.innerText;
-});
-
-twoButton.addEventListener('click', function () {
-    displayNum.innerText += twoButton.innerText;
-});
-
-threeButton.addEventListener('click', function () {
-    displayNum.innerText += threeButton.innerText;
-});
-
-fourButton.addEventListener('click', function () {
-    displayNum.innerText += fourButton.innerText;
-});
-
-fiveButton.addEventListener('click', function () {
-    displayNum.innerText += fiveButton.innerText;
-});
-
-sixButton.addEventListener('click', function () {
-    displayNum.innerText += sixButton.innerText;
-});
-
-sevenButton.addEventListener('click', function () {
-    displayNum.innerText += sevenButton.innerText;
-});
-
-eightButton.addEventListener('click', function () {
-    displayNum.innerText += parseFloat(eightButton.innerText);
-});
-
-nineButton.addEventListener('click', function () {
-    displayNum.innerText += nineButton.innerText;
-});
-
-zeroButton.addEventListener('click', function () {
-    displayNum.innerText += zeroButton.innerText;
-});
-
-dotButton.addEventListener('click', function () {
-    displayNum.innerText += dotButton.innerText;
-});
-
-
-
-addButton.addEventListener('click', function () {
-    if (num1 == null) {
-        num1 = displayNum.innerText;
-        displayNum.innerText = ' ';
-    } else if (num1 != null) {
-        num2 = displayNum.innerText;
-        let result = (parseFloat(num1) + parseFloat(num2));
-        displayNum.innerText = result;
-        num1 = result;
-        num2 = 0;
-        state = 1;
-    }
-});
-
-// subButton.addEventListener('click', function () {
-//     if (num1 == null) {
-//         num1 = displayNum.innerText;
-//         displayNum.innerText = ' ';
-//     } else if (num1 != null) {
-//         num2 = displayNum.innerText;
-//         let result = (parseFloat(num1) - parseFloat(num2));
-//         displayNum.innerText = result;
-//         num1 = result;
-//         num2 = 0;
-//         state = 1;
-//     }
-// });
-
-    subButton.addEventListener('click', function() {
-        num1 = displayNum.innerText;
-        displayNum.innerText = ' ';
-    })
-
- multiButton.addEventListener('click', function () {
-    num1 = displayNum.innerText; 
-    op = '*';
-    displayNum.innerText = '';
-    return op;
+   
+    oneButton.addEventListener('click', function () {
+        if (state ==  1) {
+            displayNum.innerText = ' ';
+            state = 0;
+        } else (state == 0) 
+        displayNum.innerText += oneButton.innerText;
+        });
+    
+    twoButton.addEventListener('click', function () {
+        displayNum.innerText += twoButton.innerText;
     });
-
- divideButton.addEventListener('click', function () {
-    num1 = displayNum.innerText; 
-    op = '/';
-    displayNum.innerText = '';
-    return op;
- });
-
- equalsButton.addEventListener('click', function () {
-    num2 = displayNum.innerText;
-    let result = (parseFloat(num1) - parseFloat(num2));
-    displayNum.innerText = result;
-      });
-
-      // addButton now correctly adds num1 and num2 instead of concatanating the values. 
-      // Added parantheses around this - parseFloat(num1) + parseFloat(num2) -.
-
-      // New problem - When I click a number button it concatanates the new number to the sum currently in the div. 
-      // I need the value to display until the next button click. However, the second button click cannot clear the new entry. 
-
-      // 5/25/2020 6:05 - Comments above did not work as expected. Scaled back and just getting num1 - num2 = result. 
-      // Got that to work at least.
- 
-
-
-
-
-
+    
+    threeButton.addEventListener('click', function () {
+        displayNum.innerText += threeButton.innerText;
+    });
+    
+    fourButton.addEventListener('click', function () {
+        displayNum.innerText += fourButton.innerText;
+    });
+    
+    fiveButton.addEventListener('click', function () {
+        displayNum.innerText += fiveButton.innerText;
+    });
+    
+    sixButton.addEventListener('click', function () {
+        displayNum.innerText += sixButton.innerText;
+    });
+    
+    sevenButton.addEventListener('click', function () {
+        displayNum.innerText += sevenButton.innerText;
+    });
+    
+    eightButton.addEventListener('click', function () {
+        displayNum.innerText += parseFloat(eightButton.innerText);
+    });
+    
+    nineButton.addEventListener('click', function () {
+        displayNum.innerText += nineButton.innerText;
+    });
+    
+    zeroButton.addEventListener('click', function () {
+        displayNum.innerText += zeroButton.innerText;
+    });
+    
+    dotButton.addEventListener('click', function () {
+        displayNum.innerText += dotButton.innerText;
+    });
+    
