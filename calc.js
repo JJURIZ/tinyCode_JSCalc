@@ -32,10 +32,11 @@ let oneButton = document.getElementById("one"),
     divideButton = document.getElementById("divide"),
     equalsButton = document.getElementById("equals"),
     clearButton = document.getElementById("clear"),
+    backButton = document.getElementById("back"),
 
     displayNum = document.getElementById("displayNum");
 
-// Calculate function and calculate button actions
+// Calculate function 
 let calculate = function calculate(op) {
     // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
     if (num1 == null) {
@@ -64,6 +65,7 @@ let calculate = function calculate(op) {
     };
 }
 
+// Operation buttons
 addButton.addEventListener('click', function () {
     calculate(operators.plus);
 });
@@ -108,10 +110,7 @@ clearButton.addEventListener('click', function(){
     nextOperation = null;
 });
 
-// Number and dot buttons
-let buttonNumber = function buttonNumber() {
-
-}
+// Number button function
 
 let numButton = (buttonNumber) => {
     if (state == 1 || state == 2) {
@@ -121,7 +120,7 @@ let numButton = (buttonNumber) => {
     displayNum.innerText += buttonNumber.innerText;
 };
 
-
+// Number button listeners
 oneButton.addEventListener('click', function () {
     let buttonNumber = oneButton;
     numButton(buttonNumber);
@@ -177,3 +176,6 @@ dotButton.addEventListener('click', function () {
     numButton(buttonNumber);
 });
 
+backButton.addEventListener('click', function(){
+    displayNum.innerText = displayNum.innerText.substring(0, displayNum.innerText.length -1);
+});
