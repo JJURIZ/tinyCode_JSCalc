@@ -1,22 +1,19 @@
 'use strict';
 
-let num1 = null, 
+let num1 = null,
     num2 = null,
     result = null,
     state = 0;
-   
+
 
 const operators = {
     'plus': function (a, b) { return parseFloat(num1) + parseFloat(num2) },
-    'minus': function (a, b) { return parseFloat(num1) - parseFloat(num2)  },
-    'multiply': function (a, b) { return parseFloat(num1) * parseFloat(num2)  },
+    'minus': function (a, b) { return parseFloat(num1) - parseFloat(num2) },
+    'multiply': function (a, b) { return parseFloat(num1) * parseFloat(num2) },
     'divide': function (a, b) { return parseFloat(num1) / parseFloat(num2) },
 };
 
-let myStatus;
-
-console.log(myStatus);
-
+let nextOperation;
 
 let oneButton = document.getElementById("one"),
     twoButton = document.getElementById("two"),
@@ -37,77 +34,113 @@ let oneButton = document.getElementById("one"),
 
     displayNum = document.getElementById("displayNum");
 
-    addButton.addEventListener('click', function(){
-        // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
-        if (num1 == null) {
-            num1 = displayNum.innerText;
-            myStatus = operators.plus;
-            state = 1;
+let calculate = function calculate(op) {
+    // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
+    if (num1 == null) {
+        num1 = displayNum.innerText;
+        nextOperation = op;
+        state = 1;
         // Condition 2 - Second number selected and previous operation to be executed. 
-        } else if (num1 != null && result == null) {
-            num2 = displayNum.innerText;
-            displayNum.innerText = myStatus();
-            state = 1;
-            result = displayNum.innerText;
+    } else if (num1 != null && result == null) {
+        num2 = displayNum.innerText;
+        displayNum.innerText = nextOperation();
+        state = 2;
+        result = displayNum.innerText;
         // Condition 3 - Result from previous operation stored and new number entered by user. 
-        } else if (num1 != null && result != null && state != 2) {
-            num1 = result;
-            num2 = displayNum.innerText;
-            displayNum.innerText = myStatus();
-            state = 2;
-            result = displayNum.innerText;
+    } else if (num1 != null && result != null && state != 2) {
+        num1 = result;
+        num2 = displayNum.innerText;
+        displayNum.innerText = nextOperation();
+        state = 2;
+        result = displayNum.innerText;
         // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
-        } else if (state == 2) {
-            return;
-        };
-        });
+    } else if (state == 2) {
+        nextOperation = op;
+        return;
+    };
+}
 
-   
-    oneButton.addEventListener('click', function () {
-        if (state ==  1 || state == 2) {
-            displayNum.innerText = ' ';
-            state = 0;
-        } else (state == 0) 
-        displayNum.innerText += oneButton.innerText;
-        });
-    
-    twoButton.addEventListener('click', function () {
-        displayNum.innerText += twoButton.innerText;
-    });
-    
-    threeButton.addEventListener('click', function () {
-        displayNum.innerText += threeButton.innerText;
-    });
-    
-    fourButton.addEventListener('click', function () {
-        displayNum.innerText += fourButton.innerText;
-    });
-    
-    fiveButton.addEventListener('click', function () {
-        displayNum.innerText += fiveButton.innerText;
-    });
-    
-    sixButton.addEventListener('click', function () {
-        displayNum.innerText += sixButton.innerText;
-    });
-    
-    sevenButton.addEventListener('click', function () {
-        displayNum.innerText += sevenButton.innerText;
-    });
-    
-    eightButton.addEventListener('click', function () {
-        displayNum.innerText += parseFloat(eightButton.innerText);
-    });
-    
-    nineButton.addEventListener('click', function () {
-        displayNum.innerText += nineButton.innerText;
-    });
-    
-    zeroButton.addEventListener('click', function () {
-        displayNum.innerText += zeroButton.innerText;
-    });
-    
-    dotButton.addEventListener('click', function () {
-        displayNum.innerText += dotButton.innerText;
-    });
-    
+addButton.addEventListener('click', function () {
+    calculate(operators.plus);
+});
+
+subButton.addEventListener('click', function () {
+    calculate(operators.minus);
+});
+
+multiButton.addEventListener('click', function () {
+    calculate(operators.multiply);
+});
+
+divideButton.addEventListener('click', function () {
+    calculate(operators.divide);
+});
+
+let buttonNumber = function buttonNumber() {
+
+}
+
+let numButton = (buttonNumber) => {
+    if (state == 1 || state == 2) {
+        displayNum.innerText = ' ';
+        state = 0;
+    } else (state == 0)
+    displayNum.innerText += buttonNumber.innerText;
+};
+
+
+oneButton.addEventListener('click', function () {
+    let buttonNumber = oneButton;
+    numButton(buttonNumber);
+});
+
+twoButton.addEventListener('click', function () {
+    let buttonNumber = twoButton;
+    numButton(buttonNumber);
+});
+
+threeButton.addEventListener('click', function () {
+    let buttonNumber = threeButton;
+    numButton(buttonNumber);
+});
+
+fourButton.addEventListener('click', function () {
+    let buttonNumber = fourButton;
+    numButton(buttonNumber);
+});
+
+fiveButton.addEventListener('click', function () {
+    let buttonNumber = fiveButton;
+    numButton(buttonNumber);
+});
+
+sixButton.addEventListener('click', function () {
+    let buttonNumber = sixButton;
+    numButton(buttonNumber);
+});
+
+sevenButton.addEventListener('click', function () {
+    let buttonNumber = sevenButton;
+    numButton(buttonNumber);
+});
+
+eightButton.addEventListener('click', function () {
+    let buttonNumber = eightButton;
+    numButton(buttonNumber);
+});
+
+nineButton.addEventListener('click', function () {
+    let buttonNumber = nineButton;
+    numButton(buttonNumber);
+});
+
+zeroButton.addEventListener('click', function () {
+    let buttonNumber = zeroButton;
+    numButton(buttonNumber);
+});
+
+dotButton.addEventListener('click', function () {
+    let buttonNumber = dotButton;
+    numButton(buttonNumber);
+});
+
