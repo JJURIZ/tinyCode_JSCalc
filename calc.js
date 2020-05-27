@@ -31,9 +31,11 @@ let oneButton = document.getElementById("one"),
     multiButton = document.getElementById("multi"),
     divideButton = document.getElementById("divide"),
     equalsButton = document.getElementById("equals"),
+    clearButton = document.getElementById("clear"),
 
     displayNum = document.getElementById("displayNum");
 
+// Calculate function and calculate button actions
 let calculate = function calculate(op) {
     // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
     if (num1 == null) {
@@ -46,6 +48,7 @@ let calculate = function calculate(op) {
         displayNum.innerText = nextOperation();
         state = 2;
         result = displayNum.innerText;
+        nextOperation = op;
         // Condition 3 - Result from previous operation stored and new number entered by user. 
     } else if (num1 != null && result != null && state != 2) {
         num1 = result;
@@ -53,6 +56,7 @@ let calculate = function calculate(op) {
         displayNum.innerText = nextOperation();
         state = 2;
         result = displayNum.innerText;
+        nextOperation = op;
         // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
     } else if (state == 2) {
         nextOperation = op;
@@ -76,6 +80,35 @@ divideButton.addEventListener('click', function () {
     calculate(operators.divide);
 });
 
+equalsButton.addEventListener('click', function() {
+    if (num1 == null) {
+        return;
+    } else if (num1 != null && result == null) {
+        num2 = displayNum.innerText;
+        displayNum.innerText = nextOperation();
+        state = 0;
+        result = displayNum.innerText;
+        nextOperation = op;
+    } else if (num1 != null && result != null && state != 2) {
+        num1 = result;
+        num2 = displayNum.innerText;
+        displayNum.innerText = nextOperation();
+        state = 2;
+        result = displayNum.innerText;
+        nextOperation = op;
+    }
+});
+
+clearButton.addEventListener('click', function(){
+    num1 = null;
+    num2 = null;
+    result = null;
+    state = 0;
+    displayNum.innerText = ' ';
+    nextOperation = null;
+});
+
+// Number and dot buttons
 let buttonNumber = function buttonNumber() {
 
 }
