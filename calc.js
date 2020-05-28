@@ -40,24 +40,25 @@ let oneButton = document.getElementById("one"),
 let calculate = function calculate(op) {
     // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
     if (num1 == null) {
-        num1 = displayNum.innerText;
         nextOperation = op;
+        num1 = displayNum.innerText;
         state = 1;
         // Condition 2 - Second number selected and previous operation to be executed. 
     } else if (num1 != null && result == null) {
+        nextOperation = op;
         num2 = displayNum.innerText;
         displayNum.innerText = nextOperation();
         state = 2;
         result = displayNum.innerText;
-        nextOperation = op;
         // Condition 3 - Result from previous operation stored and new number entered by user. 
     } else if (num1 != null && result != null && state != 2) {
+        nextOperation = op;
         num1 = result;
         num2 = displayNum.innerText;
         displayNum.innerText = nextOperation();
         state = 2;
         result = displayNum.innerText;
-        nextOperation = op;
+
         // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
     } else if (state == 2) {
         nextOperation = op;
@@ -90,14 +91,20 @@ equalsButton.addEventListener('click', function() {
         displayNum.innerText = nextOperation();
         state = 0;
         result = displayNum.innerText;
-        nextOperation = op;
+
     } else if (num1 != null && result != null && state != 2) {
         num1 = result;
-        num2 = displayNum.innerText;
+        //num2 = displayNum.innerText;
         displayNum.innerText = nextOperation();
         state = 2;
         result = displayNum.innerText;
-        nextOperation = op;
+
+    } else if (num1 != null && result != null && state == 2) {
+        num1 = result;
+        //num2 = displayNum.innerText;
+        displayNum.innerText = nextOperation();
+        state = 2;
+        result = displayNum.innerText;
     }
 });
 
