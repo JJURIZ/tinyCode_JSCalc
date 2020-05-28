@@ -7,10 +7,10 @@ let num1 = null,
 
 
 const operators = {
-    'plus': function (a, b) { return parseFloat(num1) + parseFloat(num2) },
-    'minus': function (a, b) { return parseFloat(num1) - parseFloat(num2) },
-    'multiply': function (a, b) { return parseFloat(num1) * parseFloat(num2) },
-    'divide': function (a, b) { return parseFloat(num1) / parseFloat(num2) },
+    'plus': function(a, b) { return parseFloat(num1) + parseFloat(num2) },
+    'minus': function(a, b) { return parseFloat(num1) - parseFloat(num2) },
+    'multiply': function(a, b) { return parseFloat(num1) * parseFloat(num2) },
+    'divide': function(a, b) { return parseFloat(num1) / parseFloat(num2) },
 };
 
 let nextOperation;
@@ -66,19 +66,19 @@ let calculate = function calculate(op) {
 }
 
 // Operation buttons
-addButton.addEventListener('click', function () {
+addButton.addEventListener('click', function() {
     calculate(operators.plus);
 });
 
-subButton.addEventListener('click', function () {
+subButton.addEventListener('click', function() {
     calculate(operators.minus);
 });
 
-multiButton.addEventListener('click', function () {
+multiButton.addEventListener('click', function() {
     calculate(operators.multiply);
 });
 
-divideButton.addEventListener('click', function () {
+divideButton.addEventListener('click', function() {
     calculate(operators.divide);
 });
 
@@ -101,7 +101,7 @@ equalsButton.addEventListener('click', function() {
     }
 });
 
-clearButton.addEventListener('click', function(){
+clearButton.addEventListener('click', function() {
     num1 = null;
     num2 = null;
     result = null;
@@ -116,66 +116,66 @@ let numButton = (buttonNumber) => {
     if (state == 1 || state == 2) {
         displayNum.innerText = ' ';
         state = 0;
-    } else (state == 0)
+    } else(state == 0)
     displayNum.innerText += buttonNumber.innerText;
 };
 
 // Number button listeners
-oneButton.addEventListener('click', function () {
+oneButton.addEventListener('click', function() {
     let buttonNumber = oneButton;
     numButton(buttonNumber);
 });
 
-twoButton.addEventListener('click', function () {
+twoButton.addEventListener('click', function() {
     let buttonNumber = twoButton;
     numButton(buttonNumber);
 });
 
-threeButton.addEventListener('click', function () {
+threeButton.addEventListener('click', function() {
     let buttonNumber = threeButton;
     numButton(buttonNumber);
 });
 
-fourButton.addEventListener('click', function () {
+fourButton.addEventListener('click', function() {
     let buttonNumber = fourButton;
     numButton(buttonNumber);
 });
 
-fiveButton.addEventListener('click', function () {
+fiveButton.addEventListener('click', function() {
     let buttonNumber = fiveButton;
     numButton(buttonNumber);
 });
 
-sixButton.addEventListener('click', function () {
+sixButton.addEventListener('click', function() {
     let buttonNumber = sixButton;
     numButton(buttonNumber);
 });
 
-sevenButton.addEventListener('click', function () {
+sevenButton.addEventListener('click', function() {
     let buttonNumber = sevenButton;
     numButton(buttonNumber);
 });
 
-eightButton.addEventListener('click', function () {
+eightButton.addEventListener('click', function() {
     let buttonNumber = eightButton;
     numButton(buttonNumber);
 });
 
-nineButton.addEventListener('click', function () {
+nineButton.addEventListener('click', function() {
     let buttonNumber = nineButton;
     numButton(buttonNumber);
 });
 
-zeroButton.addEventListener('click', function () {
+zeroButton.addEventListener('click', function() {
     let buttonNumber = zeroButton;
     numButton(buttonNumber);
 });
 
-dotButton.addEventListener('click', function () {
+dotButton.addEventListener('click', function() {
     let buttonNumber = dotButton;
     numButton(buttonNumber);
 });
 
-backButton.addEventListener('click', function(){
-    displayNum.innerText = displayNum.innerText.substring(0, displayNum.innerText.length -1);
+backButton.addEventListener('click', function() {
+    displayNum.innerText = displayNum.innerText.substring(0, displayNum.innerText.length - 1);
 });
