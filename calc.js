@@ -41,23 +41,23 @@ let calculate = function calculate(op) {
     // Condition 1 - New operation. First numeric value saved, operation saved, state changed to 1. 
     if (num1 == null) {
         nextOperation = op;
-        num1 = displayNum.innerText;
+        num1 = displayNum.value;
         state = 1;
         // Condition 2 - Second number selected and previous operation to be executed. 
     } else if (num1 != null && result == null) {
         nextOperation = op;
-        num2 = displayNum.innerText;
-        displayNum.innerText = nextOperation();
+        num2 = displayNum.value;
+        displayNum.value = nextOperation();
         state = 2;
-        result = displayNum.innerText;
+        result = displayNum.value;
         // Condition 3 - Result from previous operation stored and new number entered by user. 
     } else if (num1 != null && result != null && state != 2) {
         nextOperation = op;
         num1 = result;
-        num2 = displayNum.innerText;
-        displayNum.innerText = nextOperation();
+        num2 = displayNum.value;
+        displayNum.value = nextOperation();
         state = 2;
-        result = displayNum.innerText;
+        result = displayNum.value;
 
         // Condition 4 - User has not selected a new number and clicks operation button. -NEED TO WRITE
     } else if (state == 2) {
@@ -87,24 +87,24 @@ equalsButton.addEventListener('click', function() {
     if (num1 == null) {
         return;
     } else if (num1 != null && result == null) {
-        num2 = displayNum.innerText;
-        displayNum.innerText = nextOperation();
+        num2 = displayNum.value;
+        displayNum.value = nextOperation();
         state = 0;
-        result = displayNum.innerText;
+        result = displayNum.value;
 
     } else if (num1 != null && result != null && state != 2) {
         num1 = result;
         //num2 = displayNum.innerText;
-        displayNum.innerText = nextOperation();
+        displayNum.value = nextOperation();
         state = 2;
-        result = displayNum.innerText;
+        result = displayNum.value;
 
     } else if (num1 != null && result != null && state == 2) {
         num1 = result;
         //num2 = displayNum.innerText;
-        displayNum.innerText = nextOperation();
+        displayNum.value = nextOperation();
         state = 2;
-        result = displayNum.innerText;
+        result = displayNum.value;
     }
 });
 
@@ -113,7 +113,7 @@ clearButton.addEventListener('click', function() {
     num2 = null;
     result = null;
     state = 0;
-    displayNum.innerText = ' ';
+    displayNum.value = ' ';
     nextOperation = null;
 });
 
@@ -121,10 +121,10 @@ clearButton.addEventListener('click', function() {
 
 let numButton = (buttonNumber) => {
     if (state == 1 || state == 2) {
-        displayNum.innerText = ' ';
+        displayNum.value = ' ';
         state = 0;
     } else(state == 0)
-    displayNum.innerText += buttonNumber.innerText;
+    displayNum.value += buttonNumber.innerText;
 };
 
 // Number button listeners
@@ -184,5 +184,5 @@ dotButton.addEventListener('click', function() {
 });
 
 backButton.addEventListener('click', function() {
-    displayNum.innerText = displayNum.innerText.substring(0, displayNum.innerText.length - 1);
+    displayNum.value = displayNum.value.substring(0, displayNum.value.length - 1);
 });
