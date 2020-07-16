@@ -14,6 +14,7 @@ html {
 
 .container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -27,11 +28,10 @@ h1 {
 .calculator {
     border: 1px solid #ccc;
     border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 400px;
+    margin: 2rem 0 2rem 0;
+    order: 2;
+    align-self: center;
 }
 
 #displayNum {
@@ -112,9 +112,9 @@ header {
     border-radius: 5px;
     background-image: linear-gradient(#424242, #2b2a2a);
     color: white;
-    position: absolute;
-    top: 0;
+    order: 1;
     width: 100%;
+    padding: 1rem 3rem 1rem 3rem;
 }
 
 footer {
@@ -122,13 +122,15 @@ footer {
     border-radius: 5px;
     background-image: linear-gradient(#424242, #2b2a2a);
     color: white;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    display: flex;
+    order: 3;
+    flex-direction: column;
 }
 
 header h1 {
     font-size: 48px;
+    padding-bottom: 1rem;
 }
 
 header p {
@@ -137,9 +139,12 @@ header p {
 
 footer h1 {
     font-size: 36px;
+    order: 1;
+    padding: 1rem 0 1rem 0;
 }
 
 footer p {
     font-size: 18px;
-    padding: 0 0 1rem 2rem;
+    padding: 0 3rem 1rem 3rem;
+    order: 2;
 }
